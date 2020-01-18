@@ -13,6 +13,7 @@ public class Receptacle : MonoBehaviour
             if (refuseObject.Type.Equals(Type))
             {
                 Debug.Log("Score");
+                Destroy(collision.gameObject);
             }
             else
             {

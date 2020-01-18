@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LevelScript : MonoBehaviour
 {
@@ -7,27 +8,29 @@ public class LevelScript : MonoBehaviour
     public Transform Launcher;
     public Transform SpawnPoint;
 
+    private GameObject refuseInstance;
+
     // Start is called before the first frame update
     void Start()
     {
-        RefuseToLaunch = GetRandomRefuseObject();
-        SpawnRefuseObjectToLaunch();
+        SpawnRandomRefuse();
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator WaitToSpawnNextRefuse()
     {
-        
+        while (refuseInstance)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        SpawnRandomRefuse();
     }
 
-    private GameObject GetRandomRefuseObject()
+    private void SpawnRandomRefuse()
     {
         int randomObject = (int)Mathf.Floor(Random.value * RefuseObjects.Length);
-        return RefuseObjects[randomObject];
-    }
-
-    private void SpawnRefuseObjectToLaunch()
-    {
-        Instantiate(RefuseToLaunch, SpawnPoint.position, Quaternion.identity, Launcher);
+        RefuseToLaunch = RefuseObjects[randomObject];
+        refuseInstance = Instantiate(RefuseToLaunch, SpawnPoint.position, Quaternion.identity, Launcher);
+        StartCoroutine(WaitToSpawnNextRefuse());
     }
 }

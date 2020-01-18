@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     public SpringJoint2D Spring;
     public Rigidbody2D Hook;
     public float releaseTime = .15f;
+    public bool Launched = false;
 
     private bool isPressed = false;
 
@@ -45,5 +46,6 @@ public class Ball : MonoBehaviour
     {
         yield return new WaitForSeconds(releaseTime);
         GetComponent<SpringJoint2D>().enabled = false;
+        Launched = true;
     }
 }
