@@ -1,17 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ball : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public SpringJoint2D Spring;
+    public Rigidbody2D Hook;
     public float releaseTime = .15f;
+
     private bool isPressed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var hookGameObject = GameObject.FindGameObjectWithTag("Hook");
+        Hook = hookGameObject.GetComponent<Rigidbody2D>();
+        Spring.connectedBody = Hook;
     }
 
     // Update is called once per frame
