@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RefuseObjects:
   - {fileID: 4427079015633178377, guid: 84f8be4e4ff721842b9db626083b277a, type: 3}
+  - {fileID: 5210328303056911962, guid: 2c3642117e8d5f947ab992a56c486b77, type: 3}
   RefuseToLaunch: {fileID: 0}
   Launcher: {fileID: 1165972623}
   SpawnPoint: {fileID: 883072683}

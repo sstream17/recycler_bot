@@ -10,6 +10,8 @@ public class IntroScene : MonoBehaviour
 
     public Image earth;
 
+    public SaveGame sg;
+
     private bool earthAnimation = true;
     private int count = 0;
     private bool up = true;
@@ -17,6 +19,7 @@ public class IntroScene : MonoBehaviour
     void Start()
     {
         StartCoroutine(intro());
+        sg.saveGame(1);
     }
 
 
