@@ -120,7 +120,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.4375}
+  m_Size: {x: 0.61538464, y: 0.53846157}
   m_Direction: 0
 --- !u!114 &1988071804043920148
 MonoBehaviour:
@@ -153,6 +153,7 @@ MonoBehaviour:
   IsPressed: 0
   Angle: 0
   Velocity: 0
+  WasLaunched: 0
 --- !u!114 &2129491009743741111
 MonoBehaviour:
   m_ObjectHideFlags: 0

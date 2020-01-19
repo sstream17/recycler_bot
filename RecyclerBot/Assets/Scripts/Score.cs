@@ -39,14 +39,17 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Refuse == null)
+        if (Time < 3)
         {
-            if (!searchingForRefuse)
+            if (Refuse == null)
             {
-                searchingForRefuse = true;
-                StartCoroutine(SearchForRefuse());
+                if (!searchingForRefuse)
+                {
+                    searchingForRefuse = true;
+                    StartCoroutine(SearchForRefuse());
+                }
+                return;
             }
-            return;
         }
 
         if (TimerFinished)
@@ -92,7 +95,7 @@ public class Score : MonoBehaviour
         GameObject searchResult = GameObject.FindGameObjectWithTag("Refuse");
         if (searchResult == null)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForEndOfFrame();
             StartCoroutine(SearchForRefuse());
         }
         else
@@ -105,9 +108,12 @@ public class Score : MonoBehaviour
 
     IEnumerator WaitForBuzzerBeater(GameObject refuse)
     {
-        while (refuse)
+        if (refuse && refuse.GetComponent<ThrowBall>().WasLaunched)
         {
-            yield return new WaitForEndOfFrame();
+            while (refuse)
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         UnityEngine.Time.timeScale = 0f;
