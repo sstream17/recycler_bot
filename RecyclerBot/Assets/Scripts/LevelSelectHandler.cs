@@ -112,7 +112,7 @@ public class LevelSelectHandler : MonoBehaviour
 
     public void initPrefs()
     {
-        PlayerPrefs.SetInt("currentLevel", 3);
+        PlayerPrefs.SetInt("currentLevel", 9);
         //Debug.Log("Set Prefs");
     }
     public void loadLevel(string sceneName)
