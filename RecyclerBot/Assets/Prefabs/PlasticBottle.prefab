@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4427079015633178375}
   - component: {fileID: 4427079015633178372}
   - component: {fileID: 4427079015633178376}
+  - component: {fileID: 2095032096943307954}
+  - component: {fileID: 4980229853382048720}
   m_Layer: 0
   m_Name: PlasticBottle
   m_TagString: Untagged
@@ -133,3 +135,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+--- !u!114 &2095032096943307954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427079015633178377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8036da574cb399b4d97e3c1936e1330e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rb: {fileID: 4427079015633178375}
+  thrustMultiplier: 10
+  IsPressed: 0
+  Angle: 0
+  Velocity: 0
+--- !u!114 &4980229853382048720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427079015633178377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c802bbecaed064e8569d5f2501deb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowBall: {fileID: 2095032096943307954}
+  TrajectoryDot: {fileID: 8589430368441917164, guid: ae31accca46f56041ba9dc024d706c71,
+    type: 3}

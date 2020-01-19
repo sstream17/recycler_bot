@@ -3,7 +3,7 @@
 public class ThrowBall : MonoBehaviour
 {
     public Rigidbody2D Rb;
-    public float thrustMultiplier = 500f;
+    public float thrustMultiplier = 10f;
     public bool IsPressed = false;
     public float Angle;
     public float Velocity;

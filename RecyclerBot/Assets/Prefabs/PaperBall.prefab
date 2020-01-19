@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1988071804043920154}
   - component: {fileID: 1988071804043920155}
   - component: {fileID: 1988071804043920152}
-  - component: {fileID: 6761711501824195028}
   - component: {fileID: 1988071804043920148}
-  - component: {fileID: 4893938160407731977}
+  - component: {fileID: 4164641422445625107}
+  - component: {fileID: 2129491009743741111}
   m_Layer: 0
   m_Name: PaperBall
   m_TagString: Untagged
@@ -122,26 +122,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.4375}
   m_Direction: 0
---- !u!231 &6761711501824195028
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988071804043920149}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.005
-  m_DampingRatio: 0
-  m_Frequency: 2
 --- !u!114 &1988071804043920148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
---- !u!114 &4893938160407731977
+--- !u!114 &4164641422445625107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +144,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988071804043920149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dcaeff26d7b2045b754ada63a35302, type: 3}
+  m_Script: {fileID: 11500000, guid: 8036da574cb399b4d97e3c1936e1330e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1988071804043920155}
-  Spring: {fileID: 6761711501824195028}
-  Hook: {fileID: 0}
-  releaseTime: 0.15
+  Rb: {fileID: 1988071804043920155}
+  thrustMultiplier: 10
+  IsPressed: 0
+  Angle: 0
+  Velocity: 0
+--- !u!114 &2129491009743741111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988071804043920149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c802bbecaed064e8569d5f2501deb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowBall: {fileID: 4164641422445625107}
+  TrajectoryDot: {fileID: 8589430368441917164, guid: ae31accca46f56041ba9dc024d706c71,
+    type: 3}
