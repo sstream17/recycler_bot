@@ -1,14 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIHandler : MonoBehaviour
 {
 
     public GameObject pauseMenu;
     public GameObject finishMenu;
+    public TextMeshProUGUI ScoreText;
     public Image fadeImage;
 
     private bool pauseMenuIsActive = false;
@@ -37,7 +38,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void OnLevelComplete(int levelToLoad)
+    public void OnLevelComplete(int score, int levelToLoad)
     {
         if (finishMenu.activeSelf)
         {
@@ -46,6 +47,7 @@ public class UIHandler : MonoBehaviour
         else
         {
             SaveGame.Save(levelToLoad);
+            ScoreText.text = $"Your Score:\n{score}";
             finishMenu.SetActive(true);
         }
     }
@@ -60,7 +62,6 @@ public class UIHandler : MonoBehaviour
     {
         Time.timeScale = 1f;
         var levelToLoad = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        Debug.Log(levelToLoad);
         StartCoroutine(fadeOut(levelToLoad));
     }
 

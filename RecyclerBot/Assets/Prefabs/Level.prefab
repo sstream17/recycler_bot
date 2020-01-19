@@ -364,6 +364,7 @@ MonoBehaviour:
   Multiplier: 1
   ScoreText: {fileID: 5482500946917733626}
   TimeText: {fileID: 5482500947479895410}
+  LevelText: {fileID: 5482500946877324925}
   Time: 60
   TimerFinished: 0
   UIHandler: {fileID: 5482500946506053670}
@@ -726,6 +727,18 @@ MonoBehaviour:
 --- !u!114 &5482500946917733626 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5496473135697820232, guid: add51853a7332bb448a9a4b7690d8095,
+    type: 3}
+  m_PrefabInstance: {fileID: 23261965115248306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5482500946877324925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5496473135721304271, guid: add51853a7332bb448a9a4b7690d8095,
     type: 3}
   m_PrefabInstance: {fileID: 23261965115248306}
   m_PrefabAsset: {fileID: 0}

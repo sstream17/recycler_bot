@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
     public int Multiplier = 1;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimeText;
+    public TextMeshProUGUI LevelText;
     public float Time = 60f;
     public bool TimerFinished = false;
     public UIHandler UIHandler;
@@ -20,6 +21,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LevelText.text = $"Level {CurrentLevel}";
         StartCoroutine(Timer());
     }
 
@@ -32,7 +34,7 @@ public class Score : MonoBehaviour
             {
                 levelFinished = true;
                 UnityEngine.Time.timeScale = 0f;
-                UIHandler.OnLevelComplete(CurrentLevel);
+                UIHandler.OnLevelComplete(CurrentScore, CurrentLevel);
             }
             
         }

@@ -180,6 +180,11 @@ PrefabInstance:
       propertyPath: CurrentLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2923114996006313454, guid: fefed53d7a98e4342bfaa01b65658ba1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5482500946877324925, guid: fefed53d7a98e4342bfaa01b65658ba1,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -259,6 +264,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 544195277633651451, guid: b14ade921d37dc846be7fc1d0e250ba7,
+        type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 643590651}
     - target: {fileID: 5710444725432696928, guid: b14ade921d37dc846be7fc1d0e250ba7,
         type: 3}
       propertyPath: m_Name
