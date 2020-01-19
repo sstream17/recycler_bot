@@ -7,9 +7,9 @@ public class ThrowBall : MonoBehaviour
     public float X;
     public float Y;
     public Vector2 InitialPosition;
+    public bool IsPressed = false;
 
     private Vector2 startPosition;
-    private bool isPressed = false;
     private Camera mainCamera;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class ThrowBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPressed)
+        if (IsPressed)
         {
             Rb.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             X = transform.position.x;
@@ -33,14 +33,14 @@ public class ThrowBall : MonoBehaviour
     void OnMouseDown()
     {
         startPosition = new Vector2(GetComponent<Rigidbody2D>().transform.position.x, GetComponent<Rigidbody2D>().transform.position.y);
-        isPressed = true;
+        IsPressed = true;
         GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 
     void OnMouseUp()
     {
         Throw();
-        isPressed = false;
+        IsPressed = false;
     }
 
     void Throw()
@@ -52,6 +52,6 @@ public class ThrowBall : MonoBehaviour
 
     Vector2 CalculateForces()
     {
-        return startPosition - new Vector2(x, y);
+        return startPosition - new Vector2(X, Y);
     }
 }

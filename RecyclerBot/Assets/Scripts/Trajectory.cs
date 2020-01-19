@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Trajectory : MonoBehaviour
@@ -11,6 +12,7 @@ public class Trajectory : MonoBehaviour
     private List<GameObject> dots = new List<GameObject>();
     private float initialX;
     private float initialY;
+    private bool enableDots = false;
 
     private void Start()
     {
@@ -24,28 +26,67 @@ public class Trajectory : MonoBehaviour
 
     private void Update()
     {
-        initialX = ThrowBall.transform.position.x;
-        initialY = ThrowBall.transform.position.y;
-        CalculateTrajectory(initialX, initialY);
+        if (ThrowBall.IsPressed)
+        {
+            if (enableDots)
+            {
+                EnableDots();
+            }
+
+            initialX = ThrowBall.X;
+            initialY = ThrowBall.Y;
+            CalculateTrajectory(0f, 0f, initialX, initialY);
+        }
+        else if (DotsEnabled())
+        {
+            DisableDots();
+        }
     }
 
     public Vector2 CalculateTrajectory(
         float initialVelocityX,
         float initialVelocityY,
-        float initialLength = 0f,
-        float initialHeight = 0f)
+        float initialPositionX = 0f,
+        float initialPositionY = 0f)
     {
         var gravity = Physics2D.gravity.y;
         for (int i = Predictions - 1; i >= 0; i--)
         {
             var time = TimeStep / (i + 1);
-            var yTime = initialHeight + initialVelocityY * time + (0.5f * gravity * Mathf.Pow(i, 2));
-            var xTime = initialLength + initialVelocityX * time;
+            var yTime = initialPositionY + initialVelocityY * time + (0.5f * gravity * Mathf.Pow(i, 2));
+            var xTime = initialPositionX + initialVelocityX * time;
             dots[i].transform.position = new Vector2(xTime, yTime);
             var size = 1f / Predictions;
             dots[i].transform.localScale = new Vector2(size, size);
         }
 
         return new Vector2(initialVelocityX, initialVelocityY);
+    }
+
+    private void EnableDots()
+    {
+        foreach (var dot in dots)
+        {
+            SpriteRenderer spriteRenderer = dot.GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = true;
+        }
+
+        enableDots = false;
+    }
+
+    private void DisableDots()
+    {
+        foreach (var dot in dots)
+        {
+            SpriteRenderer spriteRenderer = dot.GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = true;
+        }
+
+        enableDots = true;
+    }
+
+    private bool DotsEnabled()
+    {
+        return dots.Any(dot => dot.GetComponent<SpriteRenderer>().enabled);
     }
 }
