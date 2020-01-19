@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class LevelScript : MonoBehaviour
@@ -17,6 +18,11 @@ public class LevelScript : MonoBehaviour
         Score.Instance.TimerFinished = false;
         Score.Instance.LevelFinished = false;
         Score.Instance.StartCoroutine(Score.Instance.Timer());
+        Score.Instance.ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMeshProUGUI>();
+        Score.Instance.TimeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<TextMeshProUGUI>();
+        Score.Instance.LevelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<TextMeshProUGUI>();
+        Score.Instance.UIHandler = GameObject.FindGameObjectWithTag("UIHandler").GetComponent<UIHandler>();
+        Score.Instance.LevelText.text = $"Level {Score.Instance.CurrentLevel}";
         SpawnRandomRefuse();
     }
 
