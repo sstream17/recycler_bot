@@ -8,6 +8,7 @@ public class ThrowBall : MonoBehaviour
     public bool IsPressed = false;
     public float Angle;
     public float Velocity;
+    public bool WasLaunched = false;
 
     private Vector2 startPosition;
     private Camera mainCamera;
@@ -49,9 +50,11 @@ public class ThrowBall : MonoBehaviour
 
     void Throw()
     {
+        WasLaunched = true;
         Rb.velocity = force;
         Rb.AddTorque(torque);
         Collider.enabled = true;
+        Destroy(gameObject, 5f);
     }
 
     Vector2 CalculateForces()
