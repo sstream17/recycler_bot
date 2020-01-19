@@ -24,7 +24,9 @@ public class Story3Handler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        string[] text = { "Hello this is story scene 3" };
+        string[] text = { "Way to go R3!Now lets really kick things into gear by adding compost and plastic into the mix!",
+              "Compost can be collected by old foods such as a banana peel! Put the banana peel into the compost bin!",
+        "Plastics such as recyclable water bottles can be sorted into the <color=red>red<color=white> recycling bin! Give it your best shot R3!"};
         dialogueManager.setText(text, "Narrator");
 
 

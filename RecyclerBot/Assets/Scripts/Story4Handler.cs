@@ -24,7 +24,8 @@ public class Story4Handler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        string[] text = { "Hello this is story scene 4" };
+        string[] text = { "Trees are growing big and strong while people have returned to the streets! All of R3’s efforts have been a complete success!",
+        "R3 you’ve done so much for us, soon your mission will come to an end and you can retire nicely! We love you R3, keep going!"};
         dialogueManager.setText(text, "Narrator");
 
 
