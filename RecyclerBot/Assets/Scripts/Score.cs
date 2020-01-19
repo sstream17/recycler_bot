@@ -34,7 +34,7 @@ public class Score : MonoBehaviour
             {
                 levelFinished = true;
                 UnityEngine.Time.timeScale = 0f;
-                UIHandler.OnLevelComplete(CurrentScore, CurrentLevel);
+                UIHandler.OnLevelComplete(CurrentScore, CurrentLevel + 1);
             }
             
         }

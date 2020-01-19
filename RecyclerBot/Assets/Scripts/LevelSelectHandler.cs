@@ -13,13 +13,7 @@ public class LevelSelectHandler : MonoBehaviour
     {
         disableLevels();
         loadLevels();
-       initPrefs();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //initPrefs();
     }
 
     public void changeScene(int sceneIndex)
@@ -51,13 +45,13 @@ public class LevelSelectHandler : MonoBehaviour
 
     public void disableLevels()
     {
-        for(int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++)
         {
             Button b = GameObject.Find("Canvas/Level_Holder/Level_" + (i + 1)).GetComponent<Button>();
             b.interactable = false;
         }
 
-        for(int j = 0;j<4; j++)
+        for (int j = 0; j < 4; j++)
         {
             Button s = GameObject.Find("Canvas/Level_Holder/Story_" + (j + 1)).GetComponent<Button>();
             s.interactable = false;
@@ -101,13 +95,13 @@ public class LevelSelectHandler : MonoBehaviour
                     s.interactable = true;
                 }
             }
-            if(level == 9)
+            if (level == 9)
             {
                 Button f = GameObject.Find("Canvas/Finally_Button").GetComponent<Button>();
                 f.interactable = true;
             }
         }
- 
+
     }
 
     public void initPrefs()
