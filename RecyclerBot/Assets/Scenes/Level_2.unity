@@ -363,6 +363,11 @@ PrefabInstance:
       propertyPath: CurrentLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5068498033989420587, guid: fefed53d7a98e4342bfaa01b65658ba1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cc4894437d45f8b479fd371beea37011, type: 3}
     - target: {fileID: 5482500946877324925, guid: fefed53d7a98e4342bfaa01b65658ba1,
         type: 3}
       propertyPath: m_textInfo.characterCount
