@@ -17,7 +17,7 @@ public class Trajectory : MonoBehaviour
         gravity = Mathf.Abs(Physics2D.gravity.y);
         for (int i = 0; i < predictions / 2; i++)
         {
-            var dot = Instantiate(TrajectoryDot);
+            var dot = Instantiate(TrajectoryDot, ThrowBall.transform);
             dots.Add(dot);
         }
     }
