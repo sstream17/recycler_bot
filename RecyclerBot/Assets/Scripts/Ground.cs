@@ -7,10 +7,18 @@ public class Ground : MonoBehaviour
     public Score Score;
 
     private bool searchingForRefuse = false;
+    private int reward = 5;
+    private bool isHardMode = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        isHardMode = PlayerPrefs.GetInt("hardMode", -1) == 1;
+        if (isHardMode)
+        {
+            reward = reward * 2;
+        }
+
         if (Refuse == null)
         {
             if (!searchingForRefuse)
@@ -46,7 +54,7 @@ public class Ground : MonoBehaviour
 
     private void OnShotMissed(GameObject gameObjectToDestroy)
     {
-        Score.AddScore(-5);
+        Score.AddScore(-reward);
         Score.Streak = 0;
         Destroy(gameObjectToDestroy);
     }

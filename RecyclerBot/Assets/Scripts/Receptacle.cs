@@ -5,6 +5,14 @@ public class Receptacle : MonoBehaviour
     public RefuseType Type;
     public Score Score;
 
+    private int reward = 10;
+    private bool isHardMode = false;
+
+    private void Start()
+    {
+        isHardMode = PlayerPrefs.GetInt("hardMode", -1) == 1;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RefuseObject refuseObject = collision.GetComponent<RefuseObject>();
@@ -13,12 +21,18 @@ public class Receptacle : MonoBehaviour
         {
             if (refuseObject.Type.Equals(Type))
             {
-                Score.AddScore(Score.Multiplier * 10);
+                Score.AddScore(Score.Multiplier * reward);
                 Score.Streak += 1;
             }
             else
             {
-                Score.AddScore(-10);
+                var negativeReward = -reward;
+                if (isHardMode)
+                {
+                    negativeReward = Score.Multiplier * negativeReward;
+                }
+
+                Score.AddScore(negativeReward);
                 Score.Streak = 0;
             }
 

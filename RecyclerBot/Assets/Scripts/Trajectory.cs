@@ -11,9 +11,16 @@ public class Trajectory : MonoBehaviour
     private List<GameObject> dots = new List<GameObject>();
     private float gravity;
     private bool enableDots = true;
+    private bool isHardMode = false;
 
     private void Start()
     {
+        isHardMode = PlayerPrefs.GetInt("hardMode", -1) == 1;
+        if (isHardMode)
+        {
+            enabled = false;
+        }
+
         gravity = Mathf.Abs(Physics2D.gravity.y);
         for (int i = 0; i < predictions / 2; i++)
         {

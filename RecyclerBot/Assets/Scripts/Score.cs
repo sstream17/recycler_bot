@@ -33,7 +33,7 @@ public class Score : MonoBehaviour
 
         }
 
-        Multiplier = Streak / 3;
+        Multiplier = Streak / 3 == 0 ? 1 : Streak / 3;
 
         TimeText.text = FormatTime(Time);
         ScoreText.text = CurrentScore.ToString();
