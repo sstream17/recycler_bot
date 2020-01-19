@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5210328303056911959}
   - component: {fileID: 365507106782573891}
   - component: {fileID: 5210328303056911963}
-  - component: {fileID: 363442881059546737}
+  - component: {fileID: 1051105150946856617}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
---- !u!114 &363442881059546737
+--- !u!114 &1051105150946856617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,3 +171,4 @@ MonoBehaviour:
   Spring: {fileID: 365507106782573891}
   Hook: {fileID: 0}
   releaseTime: 0.15
+  Launched: 0
