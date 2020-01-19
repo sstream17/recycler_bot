@@ -47,6 +47,11 @@ public class Trajectory : MonoBehaviour
         {
             float time = (float)i / predictions;
             var x = time * maxDistance;
+            if (angle < 0)
+            {
+                x = -x;
+            }
+
             var y = x * Mathf.Tan(angle) - (gravity * Mathf.Pow(x, 2) / (2 * Mathf.Pow(velocity, 2) *  Mathf.Pow(Mathf.Cos(angle), 2)));
             if (float.IsNaN(y))
             {
