@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public GameObject Refuse;
+    public Score Score;
 
     private bool searchingForRefuse = false;
 
@@ -38,9 +39,16 @@ public class Ground : MonoBehaviour
         {
             if (Refuse.transform.position.y < -5f)
             {
-                Destroy(Refuse.gameObject);
+                OnShotMissed(Refuse.gameObject);
             }
         }
+    }
+
+    private void OnShotMissed(GameObject gameObjectToDestroy)
+    {
+        Score.AddScore(-5);
+        Score.Streak = 0;
+        Destroy(gameObjectToDestroy);
     }
 
     IEnumerator SearchForRefuse()
@@ -65,7 +73,7 @@ public class Ground : MonoBehaviour
 
         if (refuseObject != null)
         {
-            Destroy(collision.gameObject);
+            OnShotMissed(refuseObject.gameObject);
         }
     }
 }

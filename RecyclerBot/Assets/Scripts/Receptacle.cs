@@ -3,6 +3,7 @@
 public class Receptacle : MonoBehaviour
 {
     public RefuseType Type;
+    public Score Score;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,11 +13,13 @@ public class Receptacle : MonoBehaviour
         {
             if (refuseObject.Type.Equals(Type))
             {
-                Debug.Log("Score");
+                Score.AddScore(Score.Multiplier * 10);
+                Score.Streak += 1;
             }
             else
             {
-                Debug.Log("Wrong");
+                Score.AddScore(-10);
+                Score.Streak = 0;
             }
 
             Destroy(collision.gameObject);

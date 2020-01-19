@@ -5,6 +5,9 @@ using System;
 
 public class Score : MonoBehaviour
 {
+    public int CurrentScore = 0;
+    public int Streak = 0;
+    public int Multiplier = 1;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimeText;
     public float Time = 60f;
@@ -30,7 +33,15 @@ public class Score : MonoBehaviour
 
         }
 
+        Multiplier = Streak / 3;
+
         TimeText.text = FormatTime(Time);
+        ScoreText.text = CurrentScore.ToString();
+    }
+
+    public void AddScore(int score)
+    {
+        CurrentScore += score;
     }
 
     IEnumerator Timer()
