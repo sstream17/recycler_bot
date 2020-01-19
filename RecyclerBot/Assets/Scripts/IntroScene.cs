@@ -63,9 +63,9 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         string[] text = {"The year is 2200. The world has been <color=red>ruined<color=white> by big corperations outlawing recycling",
-            "As generations passed people had forgotten what it means to <color=green>Reduce, reuse, and recycle<color=white>.",
+            "As generations passed people forgot what it means to <color=green>Reduce, reuse, and recycle<color=white>.",
             "There is a small spark of hope. An android named R3 has mysteriously appeared in society, destined to teach the people of the old ways",
-            "Humanities last hope is left up to a small robot..." };
+            "Humanity's last hope is left up to a small robot..." };
         dialogueManager.setText(text, "Narrator");
         
 

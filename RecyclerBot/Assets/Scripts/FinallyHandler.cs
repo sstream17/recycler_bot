@@ -23,7 +23,7 @@ public class FinallyHandler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        string[] text = { "Hello this is a place holder for the finally" };
+        string[] text = { "Hello this is a place holder for the finale" };
         dialogueManager.setText(text, "Narrator");
 
 
