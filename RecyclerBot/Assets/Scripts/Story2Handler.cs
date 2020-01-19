@@ -25,7 +25,9 @@ public class Story2Handler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        string[] text = {"Hello this is story scene two"};
+        string[] text = {"The air has already gotten cleaner, and the smog has cleared! Grass has started growing...",
+            "You’re doing so well already R3! It’s time to learn about even more items you can recycle. <color=green>Green<color=white> glass bottles go into the <color=green>green<color=white> bin. Tin can go into the <color=yellow>yellow<color=white> bins!",
+        "Let's try it now!"};
         dialogueManager.setText(text, "Narrator");
 
 
