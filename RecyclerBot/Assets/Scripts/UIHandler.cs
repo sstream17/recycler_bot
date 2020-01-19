@@ -37,7 +37,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void OnLevelComplete()
+    public void OnLevelComplete(int levelToLoad)
     {
         if (finishMenu.activeSelf)
         {
@@ -45,6 +45,7 @@ public class UIHandler : MonoBehaviour
         }
         else
         {
+            SaveGame.Save(levelToLoad);
             finishMenu.SetActive(true);
         }
     }

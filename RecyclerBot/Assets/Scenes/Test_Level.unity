@@ -210,11 +210,6 @@ PrefabInstance:
       propertyPath: UIHandler
       value: 
       objectReference: {fileID: 2136714002}
-    - target: {fileID: 2923114996006313454, guid: fefed53d7a98e4342bfaa01b65658ba1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5482500946506053670, guid: fefed53d7a98e4342bfaa01b65658ba1,
         type: 3}
       propertyPath: finishMenu

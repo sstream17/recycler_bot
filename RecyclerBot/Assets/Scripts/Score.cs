@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     public float Time = 60f;
     public bool TimerFinished = false;
     public UIHandler UIHandler;
+    public int CurrentLevel;
 
     private bool levelFinished = false;
 
@@ -31,7 +32,7 @@ public class Score : MonoBehaviour
             {
                 levelFinished = true;
                 UnityEngine.Time.timeScale = 0f;
-                UIHandler.OnLevelComplete();
+                UIHandler.OnLevelComplete(CurrentLevel);
             }
             
         }

@@ -11,8 +11,6 @@ public class IntroScene : MonoBehaviour
 
     public Image earth;
 
-    public SaveGame sg;
-
     private bool earthAnimation = true;
     private int count = 0;
     private bool up = true;
@@ -22,7 +20,7 @@ public class IntroScene : MonoBehaviour
         StartCoroutine(intro());
         if (PlayerPrefs.GetInt("currentLevel") == 0)
         {
-            sg.saveGame(1);
+            SaveGame.Save(1);
         }
     }
 
