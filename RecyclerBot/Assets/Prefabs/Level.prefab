@@ -247,7 +247,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4dcb9ced968a502459335c3aa742b08c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.7398772, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -366,7 +366,8 @@ MonoBehaviour:
   TimeText: {fileID: 5482500947479895410}
   Time: 60
   TimerFinished: 0
-  UIHandler: {fileID: 0}
+  UIHandler: {fileID: 5482500946506053670}
+  CurrentLevel: 0
 --- !u!1 &23261965492866074
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +711,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 23261965115248306}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5482500946506053670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5496473137703073428, guid: add51853a7332bb448a9a4b7690d8095,
+    type: 3}
+  m_PrefabInstance: {fileID: 23261965115248306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8932e5e402762b3498f6c09831b9608b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5482500946917733626 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5496473135697820232, guid: add51853a7332bb448a9a4b7690d8095,

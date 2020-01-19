@@ -2790,7 +2790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5496473135949373637}
-  finishMenu: {fileID: 0}
+  finishMenu: {fileID: 2937008019921834844}
   fadeImage: {fileID: 5496473136760954894}
 --- !u!1 &6841701409047798366
 GameObject:
