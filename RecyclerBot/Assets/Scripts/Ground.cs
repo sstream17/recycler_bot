@@ -5,6 +5,7 @@ public class Ground : MonoBehaviour
 {
     public GameObject Refuse;
     public Score Score;
+    public float LowerBound = -5f;
 
     private bool searchingForRefuse = false;
     private int reward = 5;
@@ -45,7 +46,8 @@ public class Ground : MonoBehaviour
 
         if (Refuse)
         {
-            if (Refuse.transform.position.y < -5f)
+            ThrowBall throwBall = Refuse.GetComponent<ThrowBall>();
+            if (throwBall.WasLaunched && Refuse.transform.position.y < LowerBound)
             {
                 OnShotMissed(Refuse.gameObject);
             }
@@ -72,16 +74,6 @@ public class Ground : MonoBehaviour
             searchingForRefuse = false;
             Refuse = searchResult;
             yield return false;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        RefuseObject refuseObject = collision.GetComponent<RefuseObject>();
-
-        if (refuseObject != null)
-        {
-            OnShotMissed(refuseObject.gameObject);
         }
     }
 }
