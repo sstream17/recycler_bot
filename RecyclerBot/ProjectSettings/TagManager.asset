@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hook
   - BallSpawn
+  - Refuse
   layers:
   - Default
   - TransparentFX
