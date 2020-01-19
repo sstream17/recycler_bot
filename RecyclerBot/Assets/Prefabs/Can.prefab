@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5210328303056911962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.343, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b8e527fe1a3a46a45ab5d1e974755c83, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 96cf61696056a2c4d9e821805da87b0b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,7 +120,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.64}
   m_Direction: 0
 --- !u!231 &365507106782573891
 SpringJoint2D:
@@ -139,9 +139,9 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.343
+  m_Distance: 0.005
   m_DampingRatio: 0
-  m_Frequency: 2
+  m_Frequency: 1
 --- !u!114 &5210328303056911963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +171,4 @@ MonoBehaviour:
   Spring: {fileID: 365507106782573891}
   Hook: {fileID: 0}
   releaseTime: 0.15
+  Launched: 0
