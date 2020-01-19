@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rb: {fileID: 4427079015633178375}
+  Collider: {fileID: 4427079015633178372}
   thrustMultiplier: 10
   IsPressed: 0
   Angle: 0

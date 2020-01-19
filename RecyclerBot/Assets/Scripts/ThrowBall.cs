@@ -3,6 +3,7 @@
 public class ThrowBall : MonoBehaviour
 {
     public Rigidbody2D Rb;
+    public CapsuleCollider2D Collider;
     public float thrustMultiplier = 10f;
     public bool IsPressed = false;
     public float Angle;
@@ -24,6 +25,7 @@ public class ThrowBall : MonoBehaviour
     {
         if (IsPressed)
         {
+            Collider.enabled = false;
             Rb.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector2 forces = CalculateForces();
             force = forces * thrustMultiplier;
@@ -49,6 +51,7 @@ public class ThrowBall : MonoBehaviour
     {
         Rb.velocity = force;
         Rb.AddTorque(torque);
+        Collider.enabled = true;
     }
 
     Vector2 CalculateForces()
