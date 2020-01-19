@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 5210328303056911956}
   - component: {fileID: 5210328303056911959}
   - component: {fileID: 5210328303056911963}
-  - component: {fileID: 760009013601396240}
-  - component: {fileID: 5280654857369485710}
+  - component: {fileID: 363442881059546737}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -147,14 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8036da574cb399b4d97e3c1936e1330e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rb: {fileID: 5210328303056911956}
-  thrustMultiplier: 10
-  X: 0
-  Y: 0
-  InitialPosition: {x: 0, y: 0}
-  IsPressed: 0
-  Force: {x: 0, y: 0}
---- !u!114 &5280654857369485710
+  Type: 2
+--- !u!114 &363442881059546737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
