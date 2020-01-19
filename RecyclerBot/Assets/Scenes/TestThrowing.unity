@@ -318,7 +318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RefuseObjects:
+  - {fileID: 5688260915704276522, guid: bd2f771fa8c3eeb40b8c0b12fa5aa606, type: 3}
   - {fileID: 5210328303056911962, guid: 2c3642117e8d5f947ab992a56c486b77, type: 3}
+  - {fileID: 8597826638276730043, guid: 01746f9d43107dc4e9687211937c82dd, type: 3}
+  - {fileID: 1988071804043920149, guid: 0430d567f56799d4cb058855367c4c71, type: 3}
+  - {fileID: 4427079015633178377, guid: 84f8be4e4ff721842b9db626083b277a, type: 3}
   RefuseToLaunch: {fileID: 0}
   Launcher: {fileID: 1165972623}
   SpawnPoint: {fileID: 883072683}

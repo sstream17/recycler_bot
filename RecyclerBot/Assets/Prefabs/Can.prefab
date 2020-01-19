@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5210328303056911956}
   - component: {fileID: 5210328303056911959}
   - component: {fileID: 5210328303056911963}
+  - component: {fileID: 363442881059546737}
   - component: {fileID: 760009013601396240}
-  - component: {fileID: 5280654857369485710}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -135,6 +135,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+--- !u!114 &363442881059546737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210328303056911962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c802bbecaed064e8569d5f2501deb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowBall: {fileID: 760009013601396240}
+  TrajectoryDot: {fileID: 8589430368441917164, guid: ae31accca46f56041ba9dc024d706c71,
+    type: 3}
 --- !u!114 &760009013601396240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,25 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rb: {fileID: 5210328303056911956}
   thrustMultiplier: 10
-  X: 0
-  Y: 0
-  InitialPosition: {x: 0, y: 0}
   IsPressed: 0
-  Force: {x: 0, y: 0}
---- !u!114 &5280654857369485710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5210328303056911962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c802bbecaed064e8569d5f2501deb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThrowBall: {fileID: 760009013601396240}
-  TimeStep: 0.01
-  Predictions: 10
-  TrajectoryDot: {fileID: 8589430368441917164, guid: ae31accca46f56041ba9dc024d706c71,
-    type: 3}
+  Angle: 0
+  Velocity: 0
