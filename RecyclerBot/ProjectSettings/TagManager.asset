@@ -7,6 +7,10 @@ TagManager:
   - Hook
   - BallSpawn
   - Refuse
+  - ScoreText
+  - TimeText
+  - LevelText
+  - UIHandler
   layers:
   - Default
   - TransparentFX

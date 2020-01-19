@@ -10,6 +10,7 @@ public class UIHandler : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject finishMenu;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI TotalScoreText;
     public Image fadeImage;
 
     private bool pauseMenuIsActive = false;
@@ -38,7 +39,7 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    public void OnLevelComplete(int score, int levelToLoad)
+    public void OnLevelComplete(int score, int totalScore, int levelToLoad)
     {
         if (finishMenu.activeSelf)
         {
@@ -47,7 +48,8 @@ public class UIHandler : MonoBehaviour
         else
         {
             SaveGame.Save(levelToLoad);
-            ScoreText.text = $"Your Score:\n{score}";
+            ScoreText.text = $"Score:\n{score}";
+            TotalScoreText.text = $"Total Score:\n{totalScore}";
             finishMenu.SetActive(true);
         }
     }

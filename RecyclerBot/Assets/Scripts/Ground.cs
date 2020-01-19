@@ -4,7 +4,6 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public GameObject Refuse;
-    public Score Score;
     public float LowerBound = -5f;
 
     private bool searchingForRefuse = false;
@@ -56,8 +55,8 @@ public class Ground : MonoBehaviour
 
     private void OnShotMissed(GameObject gameObjectToDestroy)
     {
-        Score.AddScore(-reward);
-        Score.Streak = 0;
+        Score.Instance.AddScore(-reward);
+        Score.Instance.Streak = 0;
         Destroy(gameObjectToDestroy);
     }
 
