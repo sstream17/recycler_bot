@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class IntroScene : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class IntroScene : MonoBehaviour
     void Start()
     {
         StartCoroutine(intro());
-        sg.saveGame(1);
+        if (PlayerPrefs.GetInt("currentLevel") == 0)
+        {
+            sg.saveGame(1);
+        }
     }
 
 
@@ -68,5 +72,10 @@ public class IntroScene : MonoBehaviour
         
 
         yield return null;
+    }
+
+    public void loadNextLevel()
+    {
+        SceneManager.LoadScene("Level_1");
     }
 }
