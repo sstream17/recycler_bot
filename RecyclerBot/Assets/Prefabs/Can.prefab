@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5210328303056911957}
   - component: {fileID: 5210328303056911956}
   - component: {fileID: 5210328303056911959}
-  - component: {fileID: 365507106782573891}
   - component: {fileID: 5210328303056911963}
-  - component: {fileID: 363442881059546737}
+  - component: {fileID: 760009013601396240}
+  - component: {fileID: 5280654857369485710}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: c3d5756cc6de2ac498d57880ef0f969f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -122,26 +122,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.6, y: 0.64}
   m_Direction: 0
---- !u!231 &365507106782573891
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5210328303056911962}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.005
-  m_DampingRatio: 0
-  m_Frequency: 1
 --- !u!114 &5210328303056911963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
---- !u!114 &363442881059546737
+--- !u!114 &760009013601396240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,11 +144,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 5210328303056911962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dcaeff26d7b2045b754ada63a35302, type: 3}
+  m_Script: {fileID: 11500000, guid: 8036da574cb399b4d97e3c1936e1330e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 5210328303056911956}
-  Spring: {fileID: 365507106782573891}
-  Hook: {fileID: 0}
-  releaseTime: 0.15
-  Launched: 0
+  Rb: {fileID: 5210328303056911956}
+  thrustMultiplier: 10
+  X: 0
+  Y: 0
+  InitialPosition: {x: 0, y: 0}
+  IsPressed: 0
+  Force: {x: 0, y: 0}
+--- !u!114 &5280654857369485710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210328303056911962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c802bbecaed064e8569d5f2501deb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowBall: {fileID: 760009013601396240}
+  TimeStep: 0.01
+  Predictions: 10
+  TrajectoryDot: {fileID: 8589430368441917164, guid: ae31accca46f56041ba9dc024d706c71,
+    type: 3}

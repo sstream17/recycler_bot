@@ -5,20 +5,19 @@ using UnityEngine;
 public class Trajectory : MonoBehaviour
 {
     public ThrowBall ThrowBall;
-    public float TimeStep = 1f;
-    public int Predictions = 10;
     public GameObject TrajectoryDot;
 
+    private int predictions = 10;
     private List<GameObject> dots = new List<GameObject>();
-    private float initialX;
-    private float initialY;
+    private float gravity;
     private bool enableDots = true;
 
     private void Start()
     {
-        for (int i = 0; i < Predictions; i++)
+        gravity = Mathf.Abs(Physics2D.gravity.y);
+        for (int i = 0; i < predictions / 2; i++)
         {
-            var dot = Instantiate(TrajectoryDot, transform);
+            var dot = Instantiate(TrajectoryDot);
             dots.Add(dot);
         }
     }
@@ -32,9 +31,7 @@ public class Trajectory : MonoBehaviour
                 EnableDots();
             }
 
-            initialX = ThrowBall.X;
-            initialY = ThrowBall.Y;
-            CalculateTrajectory(0f, 0f, initialX, initialY);
+            CalculateTrajectory(ThrowBall.Angle, ThrowBall.Velocity);
         }
         else if (DotsEnabled())
         {
@@ -42,24 +39,25 @@ public class Trajectory : MonoBehaviour
         }
     }
 
-    public Vector2 CalculateTrajectory(
-        float initialVelocityX,
-        float initialVelocityY,
-        float initialPositionX = 0f,
-        float initialPositionY = 0f)
+    void CalculateTrajectory(float angle, float velocity)
     {
-        var gravity = Physics2D.gravity.y;
-        for (int i = Predictions - 1; i >= 0; i--)
+        var maxDistance = (Mathf.Pow(velocity, 2) * Mathf.Sin(2 * angle)) / gravity;
+
+        for (int i = 0; i < predictions / 2; i++)
         {
-            var time = TimeStep / (i + 1);
-            var yTime = initialPositionY + initialVelocityY * time + (0.5f * gravity * Mathf.Pow(i, 2));
-            var xTime = initialPositionX + initialVelocityX * time;
-            dots[i].transform.position = new Vector2(xTime, yTime);
-            var size = 1f / Predictions;
+            float time = (float)i / predictions;
+            var x = time * maxDistance;
+            var y = x * Mathf.Tan(angle) - (gravity * Mathf.Pow(x, 2) / (2 * Mathf.Pow(velocity, 2) *  Mathf.Pow(Mathf.Cos(angle), 2)));
+            if (float.IsNaN(y))
+            {
+                y = 0f;
+            }
+
+            var position = (Vector2)ThrowBall.transform.position + new Vector2(x, y);
+            dots[i].transform.position = position;
+            var size = 1f / (i + 1);
             dots[i].transform.localScale = new Vector2(size, size);
         }
-
-        return new Vector2(initialVelocityX, initialVelocityY);
     }
 
     private void EnableDots()
@@ -78,7 +76,7 @@ public class Trajectory : MonoBehaviour
         foreach (var dot in dots)
         {
             SpriteRenderer spriteRenderer = dot.GetComponent<SpriteRenderer>();
-            spriteRenderer.enabled = true;
+            spriteRenderer.enabled = false;
         }
 
         enableDots = true;

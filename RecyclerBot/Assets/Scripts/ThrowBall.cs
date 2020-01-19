@@ -4,19 +4,18 @@ public class ThrowBall : MonoBehaviour
 {
     public Rigidbody2D Rb;
     public float thrustMultiplier = 500f;
-    public float X;
-    public float Y;
-    public Vector2 InitialPosition;
     public bool IsPressed = false;
+    public float Angle;
+    public float Velocity;
 
     private Vector2 startPosition;
     private Camera mainCamera;
+    private Vector2 force;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
-        InitialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -25,33 +24,35 @@ public class ThrowBall : MonoBehaviour
         if (IsPressed)
         {
             Rb.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            X = transform.position.x;
-            Y = transform.position.y;
+            Vector2 forces = CalculateForces();
+            force = forces * thrustMultiplier;
+            Velocity = force.magnitude;
+            Angle = Mathf.Atan2(force.y, force.x);
         }
     }
 
     void OnMouseDown()
     {
-        startPosition = new Vector2(GetComponent<Rigidbody2D>().transform.position.x, GetComponent<Rigidbody2D>().transform.position.y);
+        startPosition = new Vector2(transform.position.x, transform.position.y);
         IsPressed = true;
-        GetComponent<Rigidbody2D>().gravityScale = 1f;
     }
 
     void OnMouseUp()
     {
+        GetComponent<Rigidbody2D>().gravityScale = 1f;
         Throw();
         IsPressed = false;
     }
 
     void Throw()
     {
-        Vector2 forces = CalculateForces();
-        Debug.Log(forces * thrustMultiplier);
-        Rb.AddForce(forces * thrustMultiplier);
+        Rb.velocity = force;
     }
 
     Vector2 CalculateForces()
     {
-        return startPosition - new Vector2(X, Y);
+        var x = transform.position.x;
+        var y = transform.position.y;
+        return startPosition - new Vector2(x, y);
     }
 }
