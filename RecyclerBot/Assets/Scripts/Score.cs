@@ -47,7 +47,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelText.text = $"Level {CurrentLevel}";
+        Instance.LevelText.text = $"Level {Instance.CurrentLevel}";
         if (Refuse == null)
         {
             if (!searchingForRefuse)
@@ -142,5 +142,6 @@ public class Score : MonoBehaviour
         Instance.RunningScore += CurrentScore;
         UnityEngine.Time.timeScale = 0f;
         UIHandler.OnLevelComplete(CurrentScore, Instance.RunningScore, CurrentLevel + 1);
+        Instance.CurrentLevel += 1;
     }
 }
