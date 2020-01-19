@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelSelectHandler : MonoBehaviour
 {
 
     public Image fadeImage;
+    public TextMeshProUGUI HardModeText;
+
     // Start is called before the first frame update
     void Start()
     {
+        HardModeText.text = PlayerPrefs.GetInt("hardMode", -1) == 1 ? "<color=#7D3232>Hard Mode On</color>" : "<color=#323232>Hard Mode Off</color>";
         disableLevels();
         loadLevels();
         //initPrefs();
@@ -107,10 +111,23 @@ public class LevelSelectHandler : MonoBehaviour
     public void initPrefs()
     {
         PlayerPrefs.SetInt("currentLevel", 9);
-        //Debug.Log("Set Prefs");
     }
     public void loadLevel(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void ToggleHardMode()
+    {
+        if (PlayerPrefs.GetInt("hardMode", -1) == 1)
+        {
+            PlayerPrefs.SetInt("hardMode", -1);
+            HardModeText.text = "<color=#323232>Hard Mode Off</color>";
+        }
+        else
+        {
+            PlayerPrefs.SetInt("hardMode", 1);
+            HardModeText.text = "<color=#7D3232>Hard Mode On</color>";
+        }
     }
 }
