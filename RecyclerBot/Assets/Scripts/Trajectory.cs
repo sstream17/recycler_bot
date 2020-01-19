@@ -12,13 +12,12 @@ public class Trajectory : MonoBehaviour
     private List<GameObject> dots = new List<GameObject>();
     private float initialX;
     private float initialY;
-    private bool enableDots = false;
+    private bool enableDots = true;
 
     private void Start()
     {
         for (int i = 0; i < Predictions; i++)
         {
-            // Instantiate Dot
             var dot = Instantiate(TrajectoryDot, transform);
             dots.Add(dot);
         }
