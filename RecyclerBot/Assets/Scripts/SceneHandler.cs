@@ -18,7 +18,7 @@ public class SceneHandler : MonoBehaviour
         earth.enabled = false;
         exit.enabled = false;
         arrow.enabled = false;
-        if (!PlayerPrefs.HasKey("lastLevelCompleted"))
+        if (!PlayerPrefs.HasKey("currentLevel"))
         {
             Debug.Log("Didn't find a saved game");
             GameObject.Find("Main_Menu_UI/Level_Select_Button").GetComponent<Button>().interactable = false;

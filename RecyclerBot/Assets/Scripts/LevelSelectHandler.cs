@@ -13,6 +13,7 @@ public class LevelSelectHandler : MonoBehaviour
     {
         disableLevels();
         loadLevels();
+       initPrefs();
     }
 
     // Update is called once per frame
@@ -50,27 +51,72 @@ public class LevelSelectHandler : MonoBehaviour
 
     public void disableLevels()
     {
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 8; i++)
         {
             Button b = GameObject.Find("Canvas/Level_Holder/Level_" + (i + 1)).GetComponent<Button>();
             b.interactable = false;
         }
+
+        for(int j = 0;j<4; j++)
+        {
+            Button s = GameObject.Find("Canvas/Level_Holder/Story_" + (j + 1)).GetComponent<Button>();
+            s.interactable = false;
+        }
+
+        Button f = GameObject.Find("Canvas/Finally_Button").GetComponent<Button>();
+        f.interactable = false;
+
+
     }
     public void loadLevels()
     {
-        int level = PlayerPrefs.GetInt("lastLevelCompleted");
+        int level = PlayerPrefs.GetInt("currentLevel");
         Debug.Log("Loading levels... " + level);
-        for(int i = 0; i < level; i++)
+        for (int i = 0; i < level; i++)
         {
-            Button b = GameObject.Find("Canvas/Level_Holder/Level_" + (i+1)).GetComponent<Button>();
-            b.interactable = true;
-            
+            if (i < 8)
+            {
+                Debug.Log("Activating Button: " + i);
+                Button b = GameObject.Find("Canvas/Level_Holder/Level_" + (i + 1)).GetComponent<Button>();
+                b.interactable = true;
+
+                if (level > 0)
+                {
+                    Button s = GameObject.Find("Canvas/Level_Holder/Story_1").GetComponent<Button>();
+                    s.interactable = true;
+                }
+                if (level > 2)
+                {
+                    Button s = GameObject.Find("Canvas/Level_Holder/Story_2").GetComponent<Button>();
+                    s.interactable = true;
+                }
+                if (level > 4)
+                {
+                    Button s = GameObject.Find("Canvas/Level_Holder/Story_3").GetComponent<Button>();
+                    s.interactable = true;
+                }
+                if (level > 6)
+                {
+                    Button s = GameObject.Find("Canvas/Level_Holder/Story_4").GetComponent<Button>();
+                    s.interactable = true;
+                }
+            }
+            if(level == 9)
+            {
+                Button f = GameObject.Find("Canvas/Finally_Button").GetComponent<Button>();
+                f.interactable = true;
+            }
         }
+ 
     }
 
     public void initPrefs()
     {
-        PlayerPrefs.SetInt("lastLevelCompleted", 1);
-        Debug.Log("Set Prefs");
+        PlayerPrefs.SetInt("currentLevel", 3);
+        //Debug.Log("Set Prefs");
+    }
+    public void loadLevel(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

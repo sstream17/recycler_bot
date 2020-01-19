@@ -18,6 +18,6 @@ public class SaveGame : MonoBehaviour
 
     public void saveGame(int lastCompletedLevel)
     {
-        PlayerPrefs.SetInt("lastLevelCompleted", lastCompletedLevel);
+        PlayerPrefs.SetInt("currentLevel", lastCompletedLevel);
     }
 }
