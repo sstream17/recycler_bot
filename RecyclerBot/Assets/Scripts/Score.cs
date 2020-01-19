@@ -24,8 +24,6 @@ public class Score : MonoBehaviour
     {
         if (TimerFinished)
         {
-            // Disable input
-
             // Pause
             UnityEngine.Time.timeScale = 0f;
 
