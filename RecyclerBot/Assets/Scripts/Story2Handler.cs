@@ -34,7 +34,7 @@ public class Story2Handler : MonoBehaviour
 
     public void loadNextLevel()
     {
-        SceneManager.LoadScene("Level_4");
+        SceneManager.LoadScene("Level_3");
     }
 }
 

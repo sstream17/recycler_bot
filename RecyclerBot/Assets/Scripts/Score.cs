@@ -12,6 +12,9 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI TimeText;
     public float Time = 60f;
     public bool TimerFinished = false;
+    public UIHandler UIHandler;
+
+    private bool levelFinished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +27,13 @@ public class Score : MonoBehaviour
     {
         if (TimerFinished)
         {
-            // Pause
-            UnityEngine.Time.timeScale = 0f;
-
-            // Show menu
-
+            if (!levelFinished)
+            {
+                levelFinished = true;
+                UnityEngine.Time.timeScale = 0f;
+                UIHandler.OnLevelComplete();
+            }
+            
         }
 
         Multiplier = Streak / 3 == 0 ? 1 : Streak / 3;

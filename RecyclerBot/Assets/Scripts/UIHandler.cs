@@ -8,6 +8,7 @@ public class UIHandler : MonoBehaviour
 {
 
     public GameObject pauseMenu;
+    public GameObject finishMenu;
     public Image fadeImage;
 
     private bool pauseMenuIsActive = false;
@@ -16,12 +17,7 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        finishMenu.SetActive(false);
     }
 
     public void pause()
@@ -29,19 +25,42 @@ public class UIHandler : MonoBehaviour
         Debug.Log("Clicked");
         if (pauseMenuIsActive)
         {
+            Time.timeScale = 1f;
             pauseMenuIsActive = false;
             pauseMenu.SetActive(false);
         }
         else
         {
+            Time.timeScale = 0f;
             pauseMenuIsActive = true;
             pauseMenu.SetActive(true);
         }
     }
 
+    public void OnLevelComplete()
+    {
+        if (finishMenu.activeSelf)
+        {
+            finishMenu.SetActive(false);
+        }
+        else
+        {
+            finishMenu.SetActive(true);
+        }
+    }
+
     public void returnToMainMenu()
     {
+        Time.timeScale = 1f;
         StartCoroutine(fadeOut(0));
+    }
+
+    public void ContinueToNextLevel()
+    {
+        Time.timeScale = 1f;
+        var levelToLoad = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        Debug.Log(levelToLoad);
+        StartCoroutine(fadeOut(levelToLoad));
     }
 
     public IEnumerator fadeOut(int sceneIndex)
