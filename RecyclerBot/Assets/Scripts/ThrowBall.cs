@@ -11,6 +11,7 @@ public class ThrowBall : MonoBehaviour
     private Vector2 startPosition;
     private Camera mainCamera;
     private Vector2 force;
+    private float torque = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class ThrowBall : MonoBehaviour
     void Throw()
     {
         Rb.velocity = force;
+        Rb.AddTorque(torque);
     }
 
     Vector2 CalculateForces()
