@@ -13,6 +13,10 @@ public class LevelScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.Instance.Time = 60f;
+        Score.Instance.TimerFinished = false;
+        Score.Instance.LevelFinished = false;
+        Score.Instance.StartCoroutine(Score.Instance.Timer());
         SpawnRandomRefuse();
     }
 

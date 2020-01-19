@@ -3,7 +3,6 @@
 public class Receptacle : MonoBehaviour
 {
     public RefuseType Type;
-    public Score Score;
 
     private int reward = 10;
     private bool isHardMode = false;
@@ -21,19 +20,19 @@ public class Receptacle : MonoBehaviour
         {
             if (refuseObject.Type.Equals(Type))
             {
-                Score.AddScore(Score.Multiplier * reward);
-                Score.Streak += 1;
+                Score.Instance.AddScore(Score.Instance.Multiplier * reward);
+                Score.Instance.Streak += 1;
             }
             else
             {
                 var negativeReward = -reward;
                 if (isHardMode)
                 {
-                    negativeReward = Score.Multiplier * negativeReward;
+                    negativeReward = Score.Instance.Multiplier * negativeReward;
                 }
 
-                Score.AddScore(negativeReward);
-                Score.Streak = 0;
+                Score.Instance.AddScore(negativeReward);
+                Score.Instance.Streak = 0;
             }
 
             Destroy(collision.gameObject);

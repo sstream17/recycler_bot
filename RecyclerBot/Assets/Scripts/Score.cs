@@ -5,7 +5,10 @@ using System;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance;
+
     public int CurrentScore = 0;
+    public int RunningScore = 0;
     public int Streak = 0;
     public int Multiplier = 1;
     public TextMeshProUGUI ScoreText;
@@ -13,18 +16,38 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI LevelText;
     public float Time = 60f;
     public bool TimerFinished = false;
+    public bool LevelFinished = false;
     public UIHandler UIHandler;
     public int CurrentLevel;
-    public GameObject Refuse;
 
-    private bool levelFinished = false;
+    private GameObject Refuse;
     private bool searchingForRefuse = false;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        Instance.CurrentScore = 0;
+        Instance.Time = 60f;
+        Instance.TimerFinished = false;
+        Instance.ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMeshProUGUI>();
+        Instance.TimeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<TextMeshProUGUI>();
+        Instance.LevelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<TextMeshProUGUI>();
+        Instance.UIHandler = GameObject.FindGameObjectWithTag("UIHandler").GetComponent<UIHandler>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         LevelText.text = $"Level {CurrentLevel}";
-        StartCoroutine(Timer());
         if (Refuse == null)
         {
             if (!searchingForRefuse)
@@ -52,11 +75,11 @@ public class Score : MonoBehaviour
             }
         }
 
-        if (TimerFinished)
+        if (Instance.TimerFinished)
         {
-            if (!levelFinished)
+            if (!Instance.LevelFinished)
             {
-                levelFinished = true;
+                Instance.LevelFinished = true;
                 StartCoroutine(WaitForBuzzerBeater(Refuse));
             }
             
@@ -73,7 +96,7 @@ public class Score : MonoBehaviour
         CurrentScore += score;
     }
 
-    IEnumerator Timer()
+    public IEnumerator Timer()
     {
         while (Time > 0f)
         {
@@ -116,7 +139,8 @@ public class Score : MonoBehaviour
             }
         }
 
+        Instance.RunningScore += CurrentScore;
         UnityEngine.Time.timeScale = 0f;
-        UIHandler.OnLevelComplete(CurrentScore, CurrentLevel + 1);
+        UIHandler.OnLevelComplete(CurrentScore, Instance.RunningScore, CurrentLevel + 1);
     }
 }
