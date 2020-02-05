@@ -30,7 +30,7 @@ public class SceneHandler : MonoBehaviour
     {
         earth.transform.Rotate(Vector3.up, 5f);
         exit.transform.Rotate(Vector3.up, 5f);
-        arrow.transform.Rotate(Vector3.left, 5f);
+        arrow.transform.Rotate(Vector3.up, 5f);
     }
 
     public void hover(string button)
