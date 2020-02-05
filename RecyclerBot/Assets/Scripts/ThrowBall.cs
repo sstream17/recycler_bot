@@ -14,6 +14,8 @@ public class ThrowBall : MonoBehaviour
     private Camera mainCamera;
     private Vector2 force;
     private float torque = 10f;
+    private float throwingAreaBorderRight = -6.0f;
+    private float throwingAreaBorderBottom = -5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,8 @@ public class ThrowBall : MonoBehaviour
         if (IsPressed)
         {
             Collider.enabled = false;
-            Rb.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Rb.position = new Vector3(Mathf.Min(mousePosition.x, throwingAreaBorderRight), Mathf.Max(mousePosition.y, throwingAreaBorderBottom));
             Vector2 forces = CalculateForces();
             force = forces * thrustMultiplier;
             Velocity = force.magnitude;
